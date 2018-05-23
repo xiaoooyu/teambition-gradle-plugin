@@ -6,6 +6,8 @@ import org.gradle.api.tasks.TaskAction
 
 class TbBaseTask extends DefaultTask {
 
+    public TbBaseTask() {}
+
     static final String AUTH_HEADER = "Authorization"
     static final String STRIKER_AUTH_HEADER = "Authorization"
 

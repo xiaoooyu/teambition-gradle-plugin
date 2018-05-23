@@ -31,10 +31,6 @@ dependencies {
 }
 
 teambition {
-    server = 'https://www.teambition.com/api'
-    account_server = 'https://account.teambition.com'
-    striker_server = 'https://striker.teambition.net'
-
     client_id = "${teambition_client_id}"
     client_secret = "${teambition_client_secret}"
 
@@ -42,7 +38,7 @@ teambition {
     password = "${teambition_password}"
 }
 
-uploadWork {
+task('uploadTbFile', type: TbFileTask, dependsOn: tbInit) {
     from = fileTree('.') {
         include '**/*.txt'
     }

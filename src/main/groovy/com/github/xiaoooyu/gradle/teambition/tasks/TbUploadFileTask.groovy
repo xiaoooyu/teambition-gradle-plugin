@@ -4,7 +4,7 @@ import groovy.json.*
 import org.gradle.api.tasks.TaskAction
 import org.gradle.api.file.*
 
-class TbUploadWorkTask extends TbBaseTask {
+class TbUploadFileTask extends TbBaseTask {
 
     def from
     def projectId
@@ -12,7 +12,7 @@ class TbUploadWorkTask extends TbBaseTask {
 
     Set<File> files = new HashSet<>()
 
-    public TbUploadWorkTask ( ) { }
+    public TbUploadFileTask( ) { }
 
     @TaskAction
     def TbAction() {
@@ -132,7 +132,7 @@ class TbUploadWorkTask extends TbBaseTask {
                 result = new JsonSlurper().parse(httpURLConnection.getInputStream())
                 logger.info result.toString()
             } else {
-                logger.error = httpURLConnection.getErrorStream().getText("utf-8")
+                logger.error httpURLConnection.getErrorStream().getText("utf-8")
             }
         } catch (IOException ex) {
             logger.error ex.getLocalizedMessage()

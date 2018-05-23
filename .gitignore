@@ -4,3 +4,6 @@ build
 
 # ignore sensitive configurations
 plugin-demo/gradle.properties
+
+# ignore project files
+.idea/workspace.xml

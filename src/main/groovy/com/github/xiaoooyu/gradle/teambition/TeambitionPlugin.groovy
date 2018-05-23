@@ -10,19 +10,24 @@ class TeambitionPlugin
     void apply(Project project) {
         def projectContext = project.getExtensions().create("teambition", TeambitionExtension)
 
-        project.task('login', type: TbLoginTask) {
+        project.getTasks().withType(TbBaseTask.class) {
+            group = 'teambition'
+            context = projectContext
+        }
+
+        project.task('tbLogin', type: TbLoginTask) {
             group = 'Teambition'
             context = projectContext
         }
 
-        project.task('init', type: TbInitTask) {
+        project.task('tbInit', type: TbInitTask) {
             group = 'Teambition'
             context = projectContext
-        }.dependsOn('login')
+        }.dependsOn('tbLogin')
 
-        project.task('uploadWork', type: TbUploadWorkTask) {
-            group = 'Teambition'
+        project.getTasks().withType(TbFileTask.class) {
+            group = 'teambition'
             context = projectContext
-        }.dependsOn('init')
+        }.each{task -> task.dependsOn('tbInit')}
     }
 }

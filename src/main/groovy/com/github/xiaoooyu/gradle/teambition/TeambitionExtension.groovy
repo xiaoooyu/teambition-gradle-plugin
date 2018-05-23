@@ -1,4 +1,7 @@
 package com.github.xiaoooyu.gradle.teambition
+
+import groovy.json.JsonOutput
+
 /**
  * teambition {
  *    server = "https://www.teambition.com/api"
@@ -13,14 +16,21 @@ package com.github.xiaoooyu.gradle.teambition
  * }
  */
 class TeambitionExtension {
-    def server
-    def account_server
-    def striker_server
+    def server = "https://www.teambition.com/api"
+    def account_server = "https://account.teambition.com"
+    def striker_server = "https://striker.teambition.net"
+
     def client_id
     def client_secret
+
     def username
     def password
 
     def accessToken
     def strikerAuth
+
+    @Override
+    String toString() {
+        return JsonOutput.toJson(this)
+    }
 }
