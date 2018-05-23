@@ -5,6 +5,12 @@ buildscript {
     }
 }
 
+plugins {
+    id 'groovy'
+    id 'maven'
+    id 'java-gradle-plugin'
+}
+
 apply plugin: 'groovy'
 apply plugin: 'maven'
 
@@ -19,12 +25,9 @@ repositories {
 
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.4.12'
-    compile gradleApi()
     compile 'io.jsonwebtoken:jjwt:0.9.0'
     testCompile 'junit:junit:4.12'
 }
-
-
 
 // install to local repository
 task installLocal(type: Upload) {

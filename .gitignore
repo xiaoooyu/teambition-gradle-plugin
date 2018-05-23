@@ -1,9 +1,6 @@
 # ignore files produced by build process
 .gradle
-.idea
 build
 
 # ignore sensitive configurations
 plugin-demo/gradle.properties
-
-
