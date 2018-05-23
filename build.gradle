@@ -1,0 +1,50 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+}
+
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+group 'com.github.xiaoooyu'
+version '1.0.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.12'
+    compile gradleApi()
+    compile 'io.jsonwebtoken:jjwt:0.9.0'
+    testCompile 'junit:junit:4.12'
+}
+
+
+
+// install to local repository
+task installLocal(type: Upload) {
+    description "Installs the artifacts to the local Maven repository."
+    configuration = configurations['archives']
+    repositories.mavenDeployer {
+        repository url: repositories.mavenLocal().url
+    }
+}
+
+// upload to remote repository
+//uploadArchives {
+//    repositories.mavenDeployer {
+//        repository(url: "${ARTIFACT_SERVER}/${ARTIFACT_REPO}") {
+//            authentication(userName: "${ARTIFACTORY_USER}", password: "${ARTIFACTORY_PWD}")
+//        }
+//        pom.project {
+//            groupId ARTIFACT_GROUP
+//            artifactId mArtifact
+//            version mVersion
+//        }
+//    }
+//}
