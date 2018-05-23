@@ -10,6 +10,7 @@ class TbBaseTask extends DefaultTask {
 
     static final String AUTH_HEADER = "Authorization"
     static final String STRIKER_AUTH_HEADER = "Authorization"
+    static final String ENCODING_UTF8 = "utf-8"
 
     TeambitionExtension context
 

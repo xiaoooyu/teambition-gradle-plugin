@@ -45,3 +45,8 @@ task('uploadTbFile', type: TbFileTask, dependsOn: tbInit) {
     projectId = "${teambition_demo_project}"
     folderId = "${teambition_demo_folder}"
 }
+
+task('sendMsg', type: TbProjectMsgTask, dependsOn: tbInit) {
+    projectId = "${teambition_demo_project}"
+    message = "test!!!"
+}

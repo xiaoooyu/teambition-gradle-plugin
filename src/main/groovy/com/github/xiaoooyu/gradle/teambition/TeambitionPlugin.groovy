@@ -28,6 +28,11 @@ class TeambitionPlugin
         project.getTasks().withType(TbFileTask.class) {
             group = 'teambition'
             context = projectContext
-        }.each{task -> task.dependsOn('tbInit')}
+        }
+
+        project.getTasks().withType(TbProjectMsgTask.class) {
+            group = 'teambition'
+            context = projectContext
+        }
     }
 }
